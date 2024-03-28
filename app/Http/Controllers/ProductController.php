@@ -123,13 +123,10 @@ class ProductController extends Controller
             case 'checkout.session.completed':
                 $session = $event->data->object;
 
-
                 $order = Order::where('session_id', $session->id)->first();
                 if ($order && $order->status === 'unpaid') {
                     $order->status = 'paid';
                     $order->save();
-
-
                 }
             // ... handle other event types
             default:
