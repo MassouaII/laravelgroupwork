@@ -67,4 +67,5 @@ class SocialLoginController extends Controller
         ]);
         return $user;
     }
+
 }

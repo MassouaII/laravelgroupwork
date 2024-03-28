@@ -14,6 +14,12 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         //
         $middleware->trustProxies(at: '*');
+
+        $middleware->validateCsrfTokens(except: [
+            'stripe/*',
+            'http://localhost:8000/webhook',
+            'http://localhost:8000/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
